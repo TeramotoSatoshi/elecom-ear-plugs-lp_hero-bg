@@ -1,0 +1,12 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(python:*)",
+      "Bash(start index.html)",
+      "Bash(start test-slider.html)",
+      "Bash(del test-slider.html)"
+    ],
+    "deny": [],
+    "ask": []
+  }
+}
