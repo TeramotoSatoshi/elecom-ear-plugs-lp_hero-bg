@@ -113,6 +113,36 @@ body {
   justify-content: center;
   opacity: 0;
   transition: opacity 0.8s ease-in-out;
+  /* デバッグ用: 背景画像が読み込まれない場合のフォールバック色 */
+  background-color: #f0f0f0;
+}
+
+/* デスクトップ用の背景画像設定 */
+.hero-slider .hero-slide-1 {
+  background-image: url('../img/hero-bg_1.png') !important;
+}
+
+.hero-slider .hero-slide-2 {
+  background-image: url('../img/hero-bg_2.png') !important;
+}
+
+.hero-slider .hero-slide-3 {
+  background-image: url('../img/hero-bg_3.png') !important;
+}
+
+/* SP用の背景画像設定 */
+@media (max-width: 767px) {
+  .hero-slider .hero-slide-1 {
+    background-image: url('../img/hero-bg_1_sp.png') !important;
+  }
+  
+  .hero-slider .hero-slide-2 {
+    background-image: url('../img/hero-bg_1_sp.png') !important;
+  }
+  
+  .hero-slider .hero-slide-3 {
+    background-image: url('../img/hero-bg_1_sp.png') !important;
+  }
 }
 
 .hero-slide.active {
@@ -990,6 +1020,9 @@ body {
   .hero-btn {
     padding: clamp(16px, 5vw, 20px) clamp(40px, 12vw, 48px); /* SP: Fluid button padding */
     font-size: clamp(14px, 4vw, 16px); /* SP: Fluid button font size */
+    margin-left: auto; /* SP: Center the button */
+    margin-right: auto; /* SP: Center the button */
+    display: block; /* SP: Make button block element for centering */
   }
   
   
