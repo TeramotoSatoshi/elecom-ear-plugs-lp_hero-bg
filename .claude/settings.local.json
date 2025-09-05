@@ -5,7 +5,11 @@
       "Bash(start index.html)",
       "Bash(start test-slider.html)",
       "Bash(del test-slider.html)",
-      "Bash(sed:*)"
+      "Bash(sed:*)",
+      "Bash(curl:*)",
+      "Bash(node:*)",
+      "Bash(del validate.html validate.js)",
+      "Bash(py:*)"
     ],
     "deny": [],
     "ask": []

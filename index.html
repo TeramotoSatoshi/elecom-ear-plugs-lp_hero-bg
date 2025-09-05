@@ -8,6 +8,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/swiper@8/swiper-bundle.min.css">
     <link rel="stylesheet" href="./assets/css/style.css">
   </head>
   <body>
@@ -184,105 +185,58 @@
         </div>
       </section>
 
-      <section class="usersvoice">
+      <section class="user-voice">
         <div class="container">
           <div class="section-header">
             <h2 class="section-title">USERS VOICE</h2>
             <p class="section-subtitle">ユーザーの声</p>
           </div>
-          <div class="voice-slider" role="region" aria-label="ユーザーボイススライダー" tabindex="0">
-            <div class="sr-only" aria-live="polite" aria-atomic="true"></div>
-            <div class="voice-track" role="list">
-              <div class="voice-card" role="listitem">
-                <div class="voice-card-inner">
-                  <div class="voice-header">
-                    <h3 class="voice-title">耳が疲れないライブ体験</h3>
-                  </div>
-                  <div class="voice-content">
-                    <p class="voice-description">大好きなライブに行くと、いつも耳が痛くなって翌日まで響いていました。これを使うようになってから、音楽はしっかり聞こえるのに耳への負担が全然違います。ライブがもっと楽しめるようになりました。</p>
-                  </div>
+          <div class="user-voice__slider swiper" role="region" aria-label="ユーザーボイススライダー">
+            <div class="swiper-wrapper">
+              <div class="swiper-slide">
+                <div class="user-voice__card">
+                  <div class="user-voice__tag">耳が疲れないライブ体験</div>
+                  <div class="user-voice__card-title">大好きなライブに行くと、いつも耳が痛くなって翌日まで響いていました。これを使うようになってから、音楽はしっかり聞こえるのに耳への負担が全然違います。ライブがもっと楽しめるようになりました。</div>
                 </div>
               </div>
-              <div class="voice-card" role="listitem">
-                <div class="voice-card-inner">
-                  <div class="voice-header">
-                    <h3 class="voice-title">雑音をカットして集中力アップ</h3>
-                  </div>
-                  <div class="voice-content">
-                    <p class="voice-description">通勤中やカフェでの作業時に使っています。周りの騒音はしっかりカットしてくれるのに、必要な音（アナウンスや話しかけられた声）は聞こえるので安心です。仕事の効率が格段に上がりました。</p>
-                  </div>
+              <div class="swiper-slide">
+                <div class="user-voice__card">
+                  <div class="user-voice__tag">雑音をカットして集中力アップ</div>
+                  <div class="user-voice__card-title">通勤中やカフェでの作業時に使っています。周りの騒音はしっかりカットしてくれるのに、必要な音（アナウンスや話しかけられた声）は聞こえるので安心です。仕事の効率が格段に上がりました。</div>
                 </div>
               </div>
-              <div class="voice-card" role="listitem">
-                <div class="voice-card-inner">
-                  <div class="voice-header">
-                    <h3 class="voice-title">軽くて一日中快適</h3>
-                  </div>
-                  <div class="voice-content">
-                    <p class="voice-description">片耳1gという軽さが本当にすごいです。朝つけて夜まで使っても全く疲れません。耳の形にフィットするので、寝返りをうっても外れることがなく、ぐっすり眠れます。</p>
-                  </div>
+              <div class="swiper-slide">
+                <div class="user-voice__card">
+                  <div class="user-voice__tag">軽くて一日中快適</div>
+                  <div class="user-voice__card-title">片耳1gという軽さが本当にすごいです。朝つけて夜まで使っても全く疲れません。耳の形にフィットするので、寝返りをうっても外れることがなく、ぐっすり眠れます。</div>
                 </div>
               </div>
-              <div class="voice-card" role="listitem">
-                <div class="voice-card-inner">
-                  <div class="voice-header">
-                    <h3 class="voice-title">コスパ最高の遮音性能</h3>
-                  </div>
-                  <div class="voice-content">
-                    <p class="voice-description">他社の高価な耳栓と比べても遮音性能は全く劣りません。むしろこの価格でこの性能は驚きです。ケースもスライド式で持ち運びが便利で、毎日持ち歩いています。</p>
-                  </div>
+              <div class="swiper-slide">
+                <div class="user-voice__card">
+                  <div class="user-voice__tag">コスパ最高の遮音性能</div>
+                  <div class="user-voice__card-title">他社の高価な耳栓と比べても遮音性能は全く劣りません。むしろこの価格でこの性能は驚きです。ケースもスライド式で持ち運びが便利で、毎日持ち歩いています。</div>
                 </div>
               </div>
-              <div class="voice-card" role="listitem">
-                <div class="voice-card-inner">
-                  <div class="voice-header">
-                    <h3 class="voice-title">瞑想時間がより深くなった</h3>
-                  </div>
-                  <div class="voice-content">
-                    <p class="voice-description">瞑想やヨガの時間に使用しています。外の雑音に気を取られることなく、深いリラクゼーション状態に入れるようになりました。集中力が続くので、瞑想の質が向上しました。</p>
-                  </div>
+              <div class="swiper-slide">
+                <div class="user-voice__card">
+                  <div class="user-voice__tag">瞑想時間がより深くなった</div>
+                  <div class="user-voice__card-title">瞑想やヨガの時間に使用しています。外の雑音に気を取られることなく、深いリラクゼーション状態に入れるようになりました。集中力が続くので、瞑想の質が向上しました。</div>
                 </div>
               </div>
-              <div class="voice-card" role="listitem">
-                <div class="voice-card-inner">
-                  <div class="voice-header">
-                    <h3 class="voice-title">勉強に集中できる環境作り</h3>
-                  </div>
-                  <div class="voice-content">
-                    <p class="voice-description">図書館や自宅での勉強時に愛用しています。家族の生活音や外の工事音も気にならなくなり、長時間の集中が可能になりました。受験勉強の必需品です。</p>
-                  </div>
+              <div class="swiper-slide">
+                <div class="user-voice__card">
+                  <div class="user-voice__tag">勉強に集中できる環境作り</div>
+                  <div class="user-voice__card-title">図書館や自宅での勉強時に愛用しています。家族の生活音や外の工事音も気にならなくなり、長時間の集中が可能になりました。受験勉強の必需品です。</div>
                 </div>
               </div>
-              <div class="voice-card" role="listitem">
-                <div class="voice-card-inner">
-                  <div class="voice-header">
-                    <h3 class="voice-title">睡眠の質が劇的に改善</h3>
-                  </div>
-                  <div class="voice-content">
-                    <p class="voice-description">隣人の騒音や早朝の交通音で何度も目が覚めていましたが、これを使うようになって朝まで熟睡できるようになりました。翌日の体調も良く、生活の質が向上しました。</p>
-                  </div>
+              <div class="swiper-slide">
+                <div class="user-voice__card">
+                  <div class="user-voice__tag">睡眠の質が劇的に改善</div>
+                  <div class="user-voice__card-title">隣人の騒音や早朝の交通音で何度も目が覚めていましたが、これを使うようになって朝まで熟睡できるようになりました。翌日の体調も良く、生活の質が向上しました。</div>
                 </div>
               </div>
             </div>
-            <button class="voice-nav voice-prev" aria-label="前のスライド">
-              <svg class="icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
-              </svg>
-            </button>
-            <button class="voice-nav voice-next" aria-label="次のスライド">
-              <svg class="icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
-              </svg>
-            </button>
-          </div>
-          <div class="pagination">
-            <button class="pagination-dot active voice-pagination-dot" aria-label="スライド 1 に移動"></button>
-            <button class="pagination-dot voice-pagination-dot" aria-label="スライド 2 に移動"></button>
-            <button class="pagination-dot voice-pagination-dot" aria-label="スライド 3 に移動"></button>
-            <button class="pagination-dot voice-pagination-dot" aria-label="スライド 4 に移動"></button>
-            <button class="pagination-dot voice-pagination-dot" aria-label="スライド 5 に移動"></button>
-            <button class="pagination-dot voice-pagination-dot" aria-label="スライド 6 に移動"></button>
-            <button class="pagination-dot voice-pagination-dot" aria-label="スライド 7 に移動"></button>
+            <div class="user-voice__pagination"></div>
           </div>
           <div class="cta-section">
             <button class="cta-btn">
@@ -397,6 +351,7 @@
       </div>
     </footer>
 
+    <script src="https://unpkg.com/swiper@8/swiper-bundle.min.js"></script>
     <script src="./assets/js/script.js"></script>
   </body>
 </html>

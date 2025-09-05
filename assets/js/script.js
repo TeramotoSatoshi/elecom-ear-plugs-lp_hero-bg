@@ -217,131 +217,30 @@ document.addEventListener("DOMContentLoaded", function () {
   }
   showUseCaseSlide(0);
 
-  (() => {
-    let currentIndex = 0,
-      isDragging = false,
-      track,
-      dots,
-      liveRegion;
-    const update = () => {
-      const isMobile = window.innerWidth <= 768;
-      let translateX;
+  // Initialize User Voice Swiper with reference configuration
+  const initUserVoiceSwiper = () => {
+    const swiperElement = document.querySelector(".user-voice__slider");
+    if (!swiperElement) return;
 
-      if (isMobile) {
-        translateX = -100 - currentIndex * 33.333;
-      } else {
-        translateX = -112.5 - currentIndex * 25;
+    new Swiper(".user-voice__slider", {
+      loop: true,
+      slidesPerView: 'auto',
+      centeredSlides: true,
+      spaceBetween: 20,
+      initialSlide: 1,
+      pagination: {
+        el: '.user-voice__pagination',
+        clickable: true
       }
+    });
+  };
 
-      track.style.transform = `translateX(${translateX}%)`;
-      track.style.transition = isDragging ? "none" : "transform 0.3s ease-in-out";
-      dots.forEach((dot, i) => {
-        dot.classList.toggle("active", i === currentIndex);
-        dot.setAttribute("aria-pressed", i === currentIndex);
-      });
-      if (liveRegion) liveRegion.textContent = `スライド ${currentIndex + 1} / 7`;
-    };
-
-    const next = () => {
-      currentIndex = (currentIndex + 1) % 7;
-      update();
-    };
-    const prev = () => {
-      currentIndex = currentIndex ? currentIndex - 1 : 6;
-      update();
-    };
-    const goTo = (i) => {
-      if (i !== currentIndex && i >= 0 && i <= 6) {
-        currentIndex = i;
-        update();
-      }
-    };
-
-    const init = () => {
-      const slider = document.querySelector(".voice-slider");
-      track = document.querySelector(".voice-track");
-      if (!slider || !track) return;
-      const cards = [...track.children];
-      [...cards.slice(-4), ...cards.slice(0, 4)].forEach((card, i) => {
-        track[i < 4 ? "insertBefore" : "appendChild"](card.cloneNode(true), i < 4 ? track.firstChild : null);
-      });
-
-      dots = document.querySelectorAll(".voice-pagination-dot");
-      liveRegion = slider.querySelector(".sr-only[aria-live]");
-      update();
-
-      document.addEventListener("click", (e) => {
-        if (e.target.classList.contains("voice-prev")) prev();
-        else if (e.target.classList.contains("voice-next")) next();
-        else if (e.target.classList.contains("voice-pagination-dot")) goTo([...dots].indexOf(e.target));
-      });
-
-      let startX, startTransform;
-      const getX = (e) => e.touches?.[0]?.clientX ?? e.clientX;
-
-      ["pointerdown", "touchstart"].forEach((type) =>
-        slider.addEventListener(
-          type,
-          (e) => {
-            isDragging = true;
-            startX = getX(e);
-            const isMobile = window.innerWidth <= 768;
-            startTransform = parseFloat(track.style.transform.match(/-?[\d.]+/)?.[0] || (isMobile ? -100 : -112.5));
-            document.body.style.userSelect = "none";
-            e.preventDefault();
-          },
-          { passive: false }
-        )
-      );
-
-      ["pointermove", "touchmove"].forEach((type) =>
-        slider.addEventListener(
-          type,
-          (e) => {
-            if (!isDragging) return;
-            const deltaX = getX(e) - startX;
-            track.style.transform = `translateX(${startTransform + (deltaX / innerWidth) * 100}%)`;
-            track.style.transition = "none";
-            e.preventDefault();
-          },
-          { passive: false }
-        )
-      );
-
-      ["pointerup", "touchend", "mouseleave"].forEach((type) =>
-        document.addEventListener(type, (e) => {
-          if (!isDragging) return;
-          isDragging = false;
-          document.body.style.userSelect = "";
-          const deltaX = getX(e) - startX;
-          Math.abs(deltaX) > 24 ? (deltaX > 0 ? prev() : next()) : update();
-        })
-      );
-
-      slider.addEventListener("keydown", (e) => {
-        if (e.key === "ArrowLeft") {
-          e.preventDefault();
-          prev();
-        } else if (e.key === "ArrowRight") {
-          e.preventDefault();
-          next();
-        }
-      });
-
-      Object.assign(slider, {
-        tabIndex: 0,
-        role: "region",
-        "aria-label": "ユーザーボイススライダー",
-      });
-
-      addEventListener("resize", () => {
-        clearTimeout(window.voiceResizeTimeout);
-        window.voiceResizeTimeout = setTimeout(update, 100);
-      });
-    };
-
-    document.readyState === "loading" ? addEventListener("DOMContentLoaded", init) : init();
-  })();
+  // Initialize when DOM is ready
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", initUserVoiceSwiper);
+  } else {
+    initUserVoiceSwiper();
+  }
 
   let currentFaqOpen = 0;
 
@@ -371,7 +270,7 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   function handleScrollAnimations() {
-    const elements = document.querySelectorAll(".feature-card, .voice-card, .faq-item");
+    const elements = document.querySelectorAll(".feature-card, .user-voice__card, .faq-item");
     const windowHeight = window.innerHeight;
 
     elements.forEach((element) => {
@@ -384,7 +283,7 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   }
 
-  const animatedElements = document.querySelectorAll(".feature-card, .voice-card, .faq-item");
+  const animatedElements = document.querySelectorAll(".feature-card, .user-voice__card, .faq-item");
   animatedElements.forEach((element) => {
     element.style.opacity = "0";
     element.style.transform = "translateY(20px)";
