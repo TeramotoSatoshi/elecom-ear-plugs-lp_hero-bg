@@ -1089,22 +1089,19 @@ body {
   }
   
   .voice-slider {
-    width: 100dvw;
+    width: 100vw;
     left: 50%;
     transform: translateX(-50%);
     margin-bottom: clamp(20px, 6vw, 24px);
-    overflow: visible;
+    overflow: hidden;
+    max-width: 100vw;
+    margin: 0 auto;
   }
   
   .voice-card {
     flex: 0 0 70%;
     padding: 0 clamp(8px, 2.5vw, 10px);
     min-width: 0;
-  }
-  
-  .voice-slider {
-    margin: 0 auto;
-    max-width: 100vw;
   }
   
   .voice-track {
