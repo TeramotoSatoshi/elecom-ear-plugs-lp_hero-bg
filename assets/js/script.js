@@ -1,19 +1,19 @@
-// Static Landing Page JavaScript
+
 document.addEventListener('DOMContentLoaded', function() {
 
-  // Hero Slider
+  
   let currentHeroSlide = 0;
   let heroAutoSlide;
   
   function showHeroSlide(index) {
       const slides = document.querySelectorAll('.hero-slide');
       
-      // Hide all slides
+      
       slides.forEach(slide => slide.classList.remove('active'));
       
-      // Show current slide with fade effect
+      
       if (slides[index]) {
-          // Small delay to ensure smooth transition
+          
           setTimeout(() => {
               slides[index].classList.add('active');
           }, 50);
@@ -33,14 +33,14 @@ document.addEventListener('DOMContentLoaded', function() {
   }
   
   function startHeroAutoSlide() {
-      heroAutoSlide = setInterval(nextHeroSlide, 5000); // 6秒間隔
+      heroAutoSlide = setInterval(nextHeroSlide, 5000); 
   }
   
   function stopHeroAutoSlide() {
       clearInterval(heroAutoSlide);
   }
   
-  // Add swipe functionality for hero slider
+  
   const heroSlider = document.querySelector('.hero-slider');
   let heroStartX = 0;
   let heroEndX = 0;
@@ -55,7 +55,7 @@ document.addEventListener('DOMContentLoaded', function() {
         handleHeroSwipe();
         startHeroAutoSlide();
     }, { passive: true });
-    // Mouse support
+    
     heroSlider.addEventListener('mousedown', (e) => {
         heroStartX = e.clientX;
         stopHeroAutoSlide();
@@ -65,10 +65,10 @@ document.addEventListener('DOMContentLoaded', function() {
         handleHeroSwipe();
         startHeroAutoSlide();
     });
-    // Pause auto slide on hover
+    
     heroSlider.addEventListener('mouseenter', stopHeroAutoSlide);
     heroSlider.addEventListener('mouseleave', startHeroAutoSlide);
-    // Keyboard navigation
+    
     heroSlider.setAttribute('tabindex', '0');
     heroSlider.addEventListener('keydown', (e) => {
         if (e.key === 'ArrowLeft') prevHeroSlide();
@@ -90,27 +90,27 @@ document.addEventListener('DOMContentLoaded', function() {
       }
   }
   
-  // Initialize hero slider
+  
   showHeroSlide(0);
   startHeroAutoSlide();
 
-  // Use Case Slider
-  // let currentUseCaseSlide = 0;
+  
+  
   let currentUseCaseSlide = 0;
   const useCaseSlides = document.querySelectorAll('.usecase-slide');
   
   function showUseCaseSlide(index) {
-      // const slides = document.querySelectorAll('.usecase-slide');
+      
       const slides = useCaseSlides;
       const indicators = document.querySelectorAll('.usecase-indicator');
       const prevBtn = document.querySelector('.usecase-prev');
       const nextBtn = document.querySelector('.usecase-next');
       
-      // Hide all slides
+      
       slides.forEach(slide => slide.classList.remove('active'));
       indicators.forEach(indicator => indicator.classList.remove('active'));
       
-      // Show current slide
+      
       if (slides[index]) {
           slides[index].classList.add('active');
       }
@@ -118,7 +118,7 @@ document.addEventListener('DOMContentLoaded', function() {
           indicators[index].classList.add('active');
       }
       
-      // Update button states
+      
       if (prevBtn) {
           if (index === 0) {
               prevBtn.classList.add('disabled');
@@ -127,8 +127,8 @@ document.addEventListener('DOMContentLoaded', function() {
           }
       }
       
-      // if (nextBtn) {
-      //     if (index === useCases.length - 1) {
+      
+      
       if (nextBtn) {
           if (index === useCaseSlides.length - 1) {
               nextBtn.classList.add('disabled');
@@ -139,7 +139,7 @@ document.addEventListener('DOMContentLoaded', function() {
   }
   
   function nextUseCaseSlide() {
-      // if (currentUseCaseSlide < useCases.length - 1) {
+      
         if (currentUseCaseSlide < useCaseSlides.length - 1) {
           currentUseCaseSlide++;
           showUseCaseSlide(currentUseCaseSlide);
@@ -153,7 +153,7 @@ document.addEventListener('DOMContentLoaded', function() {
       }
   }
   
-  // Initialize use case slider
+  
   const useCasePrevBtn = document.querySelector('.usecase-prev');
   const useCaseNextBtn = document.querySelector('.usecase-next');
   const useCaseIndicators = document.querySelectorAll('.usecase-indicator');
@@ -174,7 +174,7 @@ document.addEventListener('DOMContentLoaded', function() {
   });
   
   
-  // Add swipe functionality for use case slider
+  
   const useCaseSlider = document.querySelector('.usecase-slider');
   let useCaseStartX = 0;
   let useCaseEndX = 0;
@@ -189,7 +189,7 @@ document.addEventListener('DOMContentLoaded', function() {
       }, { passive: true });
       
 
-      // Add mouse drag support for desktop
+      
       useCaseSlider.addEventListener('mousedown', (e) => {
           useCaseStartX = e.clientX;
           useCaseSlider.addEventListener('mousemove', handleUseCaseMouseMove);
@@ -200,7 +200,7 @@ document.addEventListener('DOMContentLoaded', function() {
           handleUseCaseSwipe();
           useCaseSlider.removeEventListener('mousemove', handleUseCaseMouseMove);
       });
-      // Keyboard navigation
+      
       useCaseSlider.addEventListener('keydown', (e) => {
           if (e.key === 'ArrowLeft') prevUseCaseSlide();
           else if (e.key === 'ArrowRight') nextUseCaseSlide();
@@ -213,39 +213,39 @@ document.addEventListener('DOMContentLoaded', function() {
   }
   
   function handleUseCaseSwipe() {
-      const swipeThreshold = 50; // minimum distance for swipe
+      const swipeThreshold = 50; 
       const swipeDistance = useCaseEndX - useCaseStartX;
       
       if (Math.abs(swipeDistance) > swipeThreshold) {
           if (swipeDistance > 0) {
-              // Swipe right - previous slide
+              
               prevUseCaseSlide();
           } else {
-              // Swipe left - next slide
+              
               nextUseCaseSlide();
           }
       }
   }
   
-  // Initialize first slide
+  
   showUseCaseSlide(0);
 
-  // Users Voice Slider - Ultra-lightweight Implementation
+  
   (() => {
       let currentIndex = 0, isDragging = false, track, dots, liveRegion;
       
       const update = () => {
-          // Mobile breakpoint: 3-card layout with center full + edge halves
+          
           const isMobile = window.innerWidth <= 768;
           let translateX;
           
           if (isMobile) {
-              // Mobile: 3-card layout - center full card with half cards on edges
-              // 複製カード分（2枚）を考慮: -66.666% + 基本オフセット(-33.333%) = -100%
-              translateX = -100 - currentIndex * 33.333; // 33.333% per card
+              
+              
+              translateX = -100 - currentIndex * 33.333; 
           } else {
-              // Desktop: 5-card layout (original)
-              translateX = -112.5 - currentIndex * 25; // 25% per card
+              
+              translateX = -112.5 - currentIndex * 25; 
           }
           
           track.style.transform = `translateX(${translateX}%)`;
@@ -266,7 +266,7 @@ document.addEventListener('DOMContentLoaded', function() {
           track = document.querySelector('.voice-track');
           if (!slider || !track) return;
           
-          // Clone cards for infinite loop
+          
           const cards = [...track.children];
           [...cards.slice(-4), ...cards.slice(0, 4)].forEach((card, i) => {
               track[i < 4 ? 'insertBefore' : 'appendChild'](card.cloneNode(true), i < 4 ? track.firstChild : null);
@@ -276,7 +276,7 @@ document.addEventListener('DOMContentLoaded', function() {
           liveRegion = slider.querySelector('.sr-only[aria-live]');
           update();
           
-          // Event delegation for buttons and dots
+          
           document.addEventListener('click', e => {
               if (e.target.classList.contains('voice-prev')) prev();
               else if (e.target.classList.contains('voice-next')) next();
@@ -284,7 +284,7 @@ document.addEventListener('DOMContentLoaded', function() {
                   goTo([...dots].indexOf(e.target));
           });
           
-          // Touch/mouse handling
+          
           let startX, startTransform;
           const getX = e => e.touches?.[0]?.clientX ?? e.clientX;
           
@@ -319,22 +319,22 @@ document.addEventListener('DOMContentLoaded', function() {
               })
           );
           
-          // Keyboard navigation
+          
           slider.addEventListener('keydown', e => {
               if (e.key === 'ArrowLeft') { e.preventDefault(); prev(); }
               else if (e.key === 'ArrowRight') { e.preventDefault(); next(); }
           });
           
-          // Accessibility
+          
           Object.assign(slider, {
               tabIndex: 0,
               role: 'region',
               'aria-label': 'ユーザーボイススライダー'
           });
           
-          // Resize handler - update layout on orientation change
+          
           addEventListener('resize', () => {
-              // Debounce resize to avoid excessive updates
+              
               clearTimeout(window.voiceResizeTimeout);
               window.voiceResizeTimeout = setTimeout(update, 100);
           });
@@ -343,40 +343,40 @@ document.addEventListener('DOMContentLoaded', function() {
       document.readyState === 'loading' ? addEventListener('DOMContentLoaded', init) : init();
   })();
 
-  // FAQ Accordion
+  
   let currentFaqOpen = 0;
   
   function toggleFaq(index) {
       const faqItems = document.querySelectorAll('.faq-item');
       const faqAnswers = document.querySelectorAll('.faq-answer');
       
-      // Close all FAQ items
+      
       faqItems.forEach((item, i) => {
           if (i === index && !item.classList.contains('active')) {
-              // Open clicked item if not already open
+              
               item.classList.add('active');
               faqAnswers[i].style.maxHeight = faqAnswers[i].scrollHeight + 'px';
               currentFaqOpen = i;
           } else {
-              // Close all other items
+              
               item.classList.remove('active');
               faqAnswers[i].style.maxHeight = '0';
           }
       });
   }
   
-  // Initialize FAQ
+  
   const faqQuestions = document.querySelectorAll('.faq-question');
   faqQuestions.forEach((question, index) => {
       question.addEventListener('click', () => toggleFaq(index));
   });
   
-  // Open first FAQ item by default
+  
   if (faqQuestions.length > 0) {
       toggleFaq(0);
   }
 
-  // Scroll Animation (Simple fade-in effect)
+  
   function handleScrollAnimations() {
       const elements = document.querySelectorAll('.feature-card, .voice-card, .faq-item');
       const windowHeight = window.innerHeight;
@@ -391,7 +391,7 @@ document.addEventListener('DOMContentLoaded', function() {
       });
   }
   
-  // Initialize scroll animations
+  
   const animatedElements = document.querySelectorAll('.feature-card, .voice-card, .faq-item');
   animatedElements.forEach(element => {
       element.style.opacity = '0';

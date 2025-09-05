@@ -1,4 +1,3 @@
-/* Reset and Base Styles */
 * {
   margin: 0;
   padding: 0;
@@ -19,7 +18,6 @@ body {
   overflow-x: hidden
 }
 
-/* CSS Variables */
 :root {
   --primary-blue: #278cc5;
   --primary-blue-hover: #2080b8;
@@ -32,14 +30,12 @@ body {
   --transition: all 0.2s ease-in-out;
 }
 
-/* Container */
 .container {
   max-width: 1280px;
   margin: 0 auto;
   padding: 0 16px;
 }
 
-/* Header Styles */
 .header {
   background-color: white;
   position: sticky;
@@ -84,11 +80,10 @@ body {
   cursor: pointer;
 }
 
-/* Hero Section */
 .hero {
   position: relative;
   min-height: 100vh;
-  min-height: 100dvh; /* SP: Dynamic viewport fallback */
+  min-height: 100dvh;
   overflow: hidden;
 }
 
@@ -113,11 +108,9 @@ body {
   justify-content: center;
   opacity: 0;
   transition: opacity 0.8s ease-in-out;
-  /* デバッグ用: 背景画像が読み込まれない場合のフォールバック色 */
   background-color: #f0f0f0;
 }
 
-/* デスクトップ用の背景画像設定 */
 .hero-slider .hero-slide-1 {
   background-image: url('../img/hero-bg_1.png') !important;
 }
@@ -130,7 +123,6 @@ body {
   background-image: url('../img/hero-bg_3.png') !important;
 }
 
-/* SP用の背景画像設定 */
 @media (max-width: 767px) {
   .hero-slider .hero-slide-1 {
     background-image: url('../img/hero-bg_1_sp.png') !important;
@@ -164,7 +156,6 @@ body {
   margin: 0 auto;
 }
 
-/* ヒーローセクション内のコンテナの幅制限を解除 */
 .hero-content .container {
   max-width: none;
   padding: 0;
@@ -217,7 +208,6 @@ body {
   transform: scale(1.05);
 }
 
-/* Slide-specific button styles */
 .hero-slide:nth-child(1) .hero-btn {
   background-color: black;
   color: white;
@@ -247,13 +237,11 @@ body {
   background-color: rgba(0, 0, 0, 0.8);
 }
 
-/* 2枚目のスライドのテキストカラーを白色に設定 */
 .hero-slide:nth-child(2) .hero-title,
 .hero-slide:nth-child(2) .hero-description {
   color: white;
 }
 
-/* 各スライドのタイトルフォントサイズ設定 */
 .hero-slide:nth-child(1) .hero-title {
   font-size: 139px;
 }
@@ -266,10 +254,6 @@ body {
   font-size: 86px;
 }
 
-
-
-
-/* Features Section */
 .features {
   padding: 64px 0;
   background-color: white;
@@ -279,7 +263,6 @@ body {
   max-width: 1600px;
 }
 
-/* Features Cards Section */
 .features-cards {
   padding: 64px 0;
   background-color: white;
@@ -388,7 +371,6 @@ body {
   letter-spacing: 2px;
 }
 
-/* Use Case Section */
 .usecase {
   padding: 64px 0;
   background-color: var(--bg-gray-50);
@@ -397,7 +379,7 @@ body {
 .usecase-slider {
   position: relative;
   width: 100vw;
-  height: 70vh; /* Fallback height - larger for better fit */
+  height: 70vh;
   left: 50%;
   transform: translateX(-50%);
   margin-bottom: 32px;
@@ -405,11 +387,10 @@ body {
   max-width: 100vw;
 }
 
-/* Modern browsers with aspect-ratio support */
 @supports (aspect-ratio: 1) {
   .usecase-slider {
-    aspect-ratio: 2.42; /* 3456/1428 = 2.42 aspect ratio */
-    height: auto; /* Let aspect-ratio control height */
+    aspect-ratio: 2.42;
+    height: auto;
   }
 }
 
@@ -419,7 +400,7 @@ body {
   left: 0;
   right: 0;
   bottom: 0;
-  background-size: cover; /* Maintain cover for proper fit */
+  background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
   display: none;
@@ -429,8 +410,6 @@ body {
   display: block;
 }
 
-
-/* Navigation controls positioned with indicators */
 .usecase-navigation {
   position: relative;
   width: 100%;
@@ -438,7 +417,7 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  min-height: 44px; /* Ensure minimum height for button area */
+  min-height: 44px;
 }
 
 .navigation-controls {
@@ -513,25 +492,23 @@ body {
 }
 
 .indicator.active {
-  width: 25vh; /* Wider active indicator */
+  width: 25vh;
   background-color: var(--primary-blue);
 }
 
 .indicator:not(.active) {
-  width: 25vh; /* Wider inactive indicator */
+  width: 25vh;
 }
 
 .indicator:not(.active):hover {
   background-color: #9ca3af;
 }
 
-/* Users Voice Section */
 .usersvoice {
   padding: 64px 0;
   background-color: var(--bg-gray-50);
 }
 
-/* ===== Voice Slider 5枚表示レイアウト ===== */
 .voice-slider {
   position: relative;
   overflow: hidden;
@@ -552,8 +529,6 @@ body {
 .voice-track {
   display: flex;
   transition: transform 0.3s ease-in-out;
-  /* 5枚表示レイアウト：左1枚（右半分）+ 中3枚（すべて）+ 右1枚（左半分） */
-  /* 初期位置：複製4枚分(-100%) + 基本オフセット(-12.5%) = -112.5% */
   transform: translateX(-112.5%);
 }
 
@@ -562,7 +537,6 @@ body {
   padding: 0 15px;
 }
 
-/* カード本体 */
 .voice-card-inner {
   background-color: white;
   border-radius: 20px;
@@ -571,7 +545,6 @@ body {
   overflow: hidden;
   height: 320px;
   transition: var(--transition);
-  /* ここでz-indexを指定しない（デフォルト） */
 }
 
 .voice-card-inner:hover {
@@ -603,7 +576,6 @@ body {
   line-height: 1.6;
 }
 
-/* ナビゲーションボタン */
 .voice-nav {
   position: absolute;
   top: 50%;
@@ -655,9 +627,6 @@ body {
 }
 
 .pagination-dot {
-  /* width: 12px;
-  height: 12px;
-  border-radius: 50%; */
   width: 100px;
   height: 5px;
   background-color: #d1d5db;
@@ -701,7 +670,6 @@ body {
   background-color: #374151;
 }
 
-/* FAQ Section */
 .faq {
   padding: 64px 0;
   background-color: var(--bg-gray-50);
@@ -771,7 +739,6 @@ body {
   line-height: 1.6;
 }
 
-/* Footer */
 .footer {
   background-color: var(--bg-gray-900);
   color: white;
@@ -860,7 +827,6 @@ body {
   font-size: 14px;
 }
 
-/* Utility Classes */
 .sr-only {
   position: absolute;
   width: 1px;
@@ -873,7 +839,6 @@ body {
   border: 0;
 }
 
-/* SVG Icons */
 .icon {
   width: 24px;
   height: 24px;
@@ -884,73 +849,58 @@ body {
   stroke-linejoin: round;
 }
 
-/* === Media Queries === */
-
 @media (min-width: 640px) {
-  /* from assets/css/style.css:1440 */
   .footer-buttons {
     flex-direction: row;
   }
 }
 
 @media (min-width: 768px) {
-  /* from assets/css/style.css:104 */
   .login-btn {
     display: block;
   }
   
-  /* from assets/css/style.css:124 */
   .mobile-menu-btn {
     display: none;
   }
   
-  /* from assets/css/style.css:237 */
   .hero-title {
     font-size: 76px;
   }
   
-  /* from assets/css/style.css:264 */
   .hero-description {
     font-size: 20px;
   }
   
-  /* from assets/css/style.css:503 */
   .features-grid {
     grid-template-columns: 1fr 1fr;
   }
   
-  /* from assets/css/style.css:630 */
   .usecase-slider {
     width: 100vw;
-    height: 65vh; /* Tablet: Larger viewport-based height */
+    height: 65vh;
   }
   
-  /* Modern browsers with aspect-ratio support */
   @supports (aspect-ratio: 1) {
     .usecase-slider {
-      height: auto; /* Let aspect-ratio control height */
-      min-height: 55vh; /* Minimum height for tablet */
+      height: auto;
+      min-height: 55vh;
     }
   }
   
-  /* from assets/css/style.css:970 */
   .voice-card {
     flex: 0 0 25%;
     padding: 0 15px;
   }
   
-  
-  /* from assets/css/style.css:1388 */
   .footer-title {
     font-size: 48px;
   }
   
-  /* from assets/css/style.css:1413 */
   .footer-description {
     font-size: 20px;
   }
   
-  /* from assets/css/style.css:1516 */
   .footer-bottom-content {
     flex-direction: row;
     gap: 0;
@@ -958,456 +908,375 @@ body {
 }
 
 @media (max-width: 767px) {
-  /* from assets/css/style.css:63 */
   .header-content {
-    height: clamp(56px, 15vw, 60px); /* SP: Fluid header height */
+    height: clamp(56px, 15vw, 60px);
   }
   
-  /* from assets/css/style.css:74 */
   .logo img {
-    height: clamp(28px, 8vw, 32px); /* SP: Fluid logo size */
+    height: clamp(28px, 8vw, 32px);
   }
   
-  /* from assets/css/style.css:92 */
   .login-btn {
-    display: block; /* SP: Show login button instead of hamburger menu */
-    padding: clamp(6px, 2vw, 8px) clamp(16px, 5vw, 20px); /* SP: Fluid padding */
-    font-size: clamp(12px, 3.5vw, 14px); /* SP: Fluid font size */
+    display: block;
+    padding: clamp(6px, 2vw, 8px) clamp(16px, 5vw, 20px);
+    font-size: clamp(12px, 3.5vw, 14px);
   }
   
-  /* from assets/css/style.css:118 */
   .mobile-menu-btn {
-    display: none; /* SP: Hide hamburger menu, show login button instead */
+    display: none;
   }
   
-  /* from assets/css/style.css:141 */
   .hero {
-    align-items: flex-start; /* SP: Align to top instead of center */
-    padding-top: clamp(8px, 2.5vw, 10px); /* SP: Fluid top padding */
+    align-items: flex-start;
+    padding-top: clamp(8px, 2.5vw, 10px);
   }
   
-  /* from assets/css/style.css:181 */
   .hero-grid {
-    grid-template-rows: auto 1fr; /* SP: Image on top, text below */
-    gap: clamp(20px, 6vw, 24px); /* SP: Fluid gap */
-    padding: clamp(6px, 2vw, 8px) 0 clamp(16px, 5vw, 20px); /* SP: Fluid padding */
+    grid-template-rows: auto 1fr;
+    gap: clamp(20px, 6vw, 24px);
+    padding: clamp(6px, 2vw, 8px) 0 clamp(16px, 5vw, 20px);
   }
-  
 
-
-  /* from assets/css/style.css:211 */
   .hero-text {
-    gap: clamp(20px, 6vw, 24px); /* SP: Fluid gap */
+    gap: clamp(20px, 6vw, 24px);
   }
   
-  /* from assets/css/style.css:230 */
   .hero-title,
   .hero-slide:nth-child(1) .hero-title,
   .hero-slide:nth-child(2) .hero-title,
   .hero-slide:nth-child(3) .hero-title {
-    font-size: clamp(36px, 12vw, 48px); /* SP: Fluid title size */
-    line-height: 1.1; /* SP: Tighter line height */
+    font-size: clamp(36px, 12vw, 48px);
+    line-height: 1.1;
   }
   
-  /* from assets/css/style.css:256 */
   .hero-description {
-    font-size: clamp(14px, 4vw, 16px); /* SP: Fluid description size */
-    line-height: 1.5; /* SP: Optimized line height */
-    max-width: 100%; /* SP: Full width on mobile */
+    font-size: clamp(14px, 4vw, 16px);
+    line-height: 1.5;
+    max-width: 100%;
   }
   
-  /* from assets/css/style.css:288 */
   .hero-btn {
-    padding: clamp(16px, 5vw, 20px) clamp(40px, 12vw, 48px); /* SP: Fluid button padding */
-    font-size: clamp(14px, 4vw, 16px); /* SP: Fluid button font size */
-    margin-left: auto; /* SP: Center the button */
-    margin-right: auto; /* SP: Center the button */
-    display: block; /* SP: Make button block element for centering */
+    padding: clamp(16px, 5vw, 20px) clamp(40px, 12vw, 48px);
+    font-size: clamp(14px, 4vw, 16px);
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
   }
   
-  
-  /* from assets/css/style.css:335 */
   .features {
-    padding: 48px 0; /* SP: Reduced padding for mobile */
+    padding: 48px 0;
   }
   
   .features-cards {
-    padding: 48px 0; /* SP: Reduced padding for mobile */
+    padding: 48px 0;
   }
   
-  /* from assets/css/style.css:352 */
   .section-header {
-    margin-bottom: 48px; /* SP: Reduced margin for mobile */
+    margin-bottom: 48px;
   }
   
-  /* from assets/css/style.css:366 */
   .section-title {
-    font-size: 28px; /* SP: Optimized font size for mobile */
-    letter-spacing: 1px; /* SP: Reduced letter spacing */
+    font-size: 28px;
+    letter-spacing: 1px;
   }
   
-  /* from assets/css/style.css:385 */
   .section-subtitle {
-    font-size: 18px; /* SP: Optimized font size for mobile */
-    letter-spacing: 2px; /* SP: Reduced letter spacing */
+    font-size: 18px;
+    letter-spacing: 2px;
   }
   
-  /* from assets/css/style.css:405 */
   .product-detail-grid {
-    gap: 32px; /* SP: Reduced gap for mobile */
-    margin-bottom: 48px; /* SP: Reduced margin */
+    gap: 32px;
+    margin-bottom: 48px;
   }
   
-  /* from assets/css/style.css:424 */
   .product-detail-img {
-    padding: 24px; /* SP: Reduced padding for mobile */
-    border-radius: 16px; /* SP: Smaller border radius */
+    padding: 24px;
+    border-radius: 16px;
   }
   
-  /* from assets/css/style.css:443 */
   .product-detail-text {
-    gap: 24px; /* SP: Reduced gap for mobile */
+    gap: 24px;
   }
   
-  /* from assets/css/style.css:462 */
   .product-detail-title {
-    font-size: 22px; /* SP: Optimized font size for mobile */
-    line-height: 1.2; /* SP: Tighter line height */
+    font-size: 22px;
+    line-height: 1.2;
   }
   
-  /* from assets/css/style.css:484 */
   .product-detail-description {
-    font-size: 16px; /* SP: Consistent font size for mobile */
-    gap: 12px; /* SP: Reduced gap */
-    line-height: 1.5; /* SP: Optimized line height */
+    font-size: 16px;
+    gap: 12px;
+    line-height: 1.5;
   }
   
-  /* from assets/css/style.css:497 */
   .features-grid {
-    gap: 24px; /* SP: Reduced gap for mobile */
+    gap: 24px;
   }
   
-  /* from assets/css/style.css:523 */
   .feature-card {
-    padding: 36px 24px; /* SP: Reduced padding for mobile */
+    padding: 36px 24px;
   }
   
-  /* from assets/css/style.css:544 */
   .feature-icon {
-    width: 96px; /* SP: Smaller icon for mobile */
+    width: 96px;
     height: 96px;
-    margin-bottom: 16px; /* SP: Reduced margin */
+    margin-bottom: 16px;
   }
   
-  /* from assets/css/style.css:558 */
   .feature-icon svg {
-    width: 36px; /* SP: Smaller SVG for mobile */
+    width: 36px;
     height: 36px;
   }
   
-  /* from assets/css/style.css:572 */
   .feature-title {
-    font-size: 18px; /* SP: Consistent font size for mobile */
-    letter-spacing: 1px; /* SP: Reduced letter spacing */
+    font-size: 18px;
+    letter-spacing: 1px;
   }
   
-  /* from assets/css/style.css:585 */
   .usecase {
-    padding: 48px 0; /* SP: Reduced padding for mobile */
+    padding: 48px 0;
   }
   
-  /* from assets/css/style.css:614 */
   .usecase-slider {
     width: 100vw;
-    height: 60vh; /* SP: Larger viewport-based height */
-    margin-bottom: 24px; /* SP: Reduced margin */
+    height: 60vh;
+    margin-bottom: 24px;
   }
   
-  /* Modern browsers with aspect-ratio support */
   @supports (aspect-ratio: 1) {
     .usecase-slider {
-      height: auto; /* Let aspect-ratio control height */
-      min-height: 50vh; /* Minimum height for mobile */
+      height: auto;
+      min-height: 50vh;
     }
   }
   
-  
-  /* from assets/css/style.css:784 */
   .usecase-navigation {
     margin-top: 36px;
-    min-height: 40px; /* SP: Match button height */
+    min-height: 40px;
   }
   
-  /* from assets/css/style.css:800 */
   .navigation-controls {
     gap: 8px;
-    left: -3vw; /* SP: Adjust position for smaller screens */
+    left: -3vw;
   }
   
-  /* from assets/css/style.css:821 */
   .slider-controls {
     width: 40px;
     height: 40px;
     padding: 10px;
   }
   
-  /* from assets/css/style.css:840 */
   .slider-controls svg {
     width: 18px;
     height: 18px;
   }
   
-  /* from assets/css/style.css:859 */
   .slider-indicators {
-    gap: 12px; /* SP: Further reduced gap for mobile */
+    gap: 12px;
   }
   
-  /* from assets/css/style.css:884 */
   .indicator.active {
-    width: 40px; /* SP: Adjusted width for mobile */
+    width: 40px;
   }
   
-  /* from assets/css/style.css:894 */
   .indicator:not(.active) {
-    width: 40px; /* SP: Adjusted width for mobile */
+    width: 40px;
   }
   
-  /* from assets/css/style.css:910 */
   .usersvoice {
-    padding: 48px 0; /* SP: Reduced padding for mobile */
+    padding: 48px 0;
   }
   
-  /* from assets/css/style.css:933 */
   .voice-slider {
-    width: 100dvw; /* SP: Dynamic viewport width */
+    width: 100dvw;
     left: 50%;
     transform: translateX(-50%);
-    margin-bottom: clamp(20px, 6vw, 24px); /* SP: Fluid margin */
-    overflow: visible; /* SP: Show edge halves */
+    margin-bottom: clamp(20px, 6vw, 24px);
+    overflow: visible;
   }
   
-  /* from assets/css/style.css:954 */
   .voice-card {
-    flex: 0 0 70%; /* SP: 3-card layout - center full + edge halves */
-    padding: 0 clamp(8px, 2.5vw, 10px); /* SP: Fluid padding */
-    min-width: 0; /* SP: Prevent flex item overflow */
+    flex: 0 0 70%;
+    padding: 0 clamp(8px, 2.5vw, 10px);
+    min-width: 0;
   }
   
   .voice-slider {
-    margin: 0 auto; /* SP: Center the slider container */
-    max-width: 100vw; /* SP: Ensure no overflow */
+    margin: 0 auto;
+    max-width: 100vw;
   }
   
-  /* SP: Override desktop track positioning for mobile 3-card layout */
   .voice-track {
-    /* Mobile: 3-card layout - 複製カード分を考慮した初期位置 */
-    transform: translateX(-125%) !important; /* SP: 複製2枚分(-66.666%) + 基本オフセット(-33.333%) */
+    transform: translateX(-125%) !important;
   }
   
-  
-  /* from assets/css/style.css:1010 */
   .voice-card-inner {
-    height: 280px; /* SP: Reduced height for mobile */
-    border-radius: 16px; /* SP: Smaller border radius */
+    height: 280px;
+    border-radius: 16px;
   }
   
-  /* from assets/css/style.css:1028 */
   .voice-header {
-    padding: 16px; /* SP: Reduced padding for mobile */
+    padding: 16px;
   }
   
-  /* from assets/css/style.css:1040 */
   .voice-title {
-    font-size: 16px; /* SP: Optimized font size for mobile */
-    letter-spacing: 0.5px; /* SP: Reduced letter spacing */
+    font-size: 16px;
+    letter-spacing: 0.5px;
   }
   
-  /* from assets/css/style.css:1053 */
   .voice-content {
-    padding: 16px; /* SP: Reduced padding for mobile */
-    height: calc(280px - 80px); /* SP: Adjusted height calculation */
+    padding: 16px;
+    height: calc(280px - 80px);
   }
   
-  /* from assets/css/style.css:1066 */
   .voice-description {
-    font-size: 14px; /* SP: Optimized font size for mobile */
-    line-height: 1.5; /* SP: Optimized line height */
+    font-size: 14px;
+    line-height: 1.5;
   }
   
-  /* from assets/css/style.css:1089 */
   .voice-nav {
-    padding: 10px; /* SP: Slightly smaller padding */
-    opacity: 0.9; /* SP: Slightly more visible */
+    padding: 10px;
+    opacity: 0.9;
   }
   
-  /* from assets/css/style.css:1127 */
   .voice-prev {
-    left: 12px; /* SP: Positioned closer to edge */
+    left: 12px;
   }
   .voice-next {
-    right: 12px; /* SP: Positioned closer to edge */
+    right: 12px;
   }
   
-  /* from assets/css/style.css:1143 */
   .pagination {
-    gap: 8px; /* SP: Further reduced gap for mobile */
-    margin-bottom: 48px; /* SP: Reduced margin */
-    margin-top: 32px; /* SP: Add top margin */
+    gap: 8px;
+    margin-bottom: 48px;
+    margin-top: 32px;
   }
   
-  /* from assets/css/style.css:1162 */
   .pagination-dot {
-    width: 30px; /* SP: Much smaller dots for mobile */
-    height: 4px; /* SP: Thinner dots */
+    width: 30px;
+    height: 4px;
   }
   
-  /* from assets/css/style.css:1193 */
   .cta-btn {
-    padding: 14px 32px; /* SP: Optimized padding for mobile */
-    font-size: 16px; /* SP: Consistent font size */
+    padding: 14px 32px;
+    font-size: 16px;
   }
   
-  /* from assets/css/style.css:1210 */
   .faq {
-    padding: 48px 0; /* SP: Reduced padding for mobile */
+    padding: 48px 0;
   }
   
-  /* from assets/css/style.css:1233 */
   .faq-list {
-    gap: 12px; /* SP: Reduced gap for mobile */
+    gap: 12px;
   }
   
-  /* from assets/css/style.css:1262 */
   .faq-question {
-    padding: 20px; /* SP: Reduced padding for mobile */
-    font-size: 15px; /* SP: Optimized font size */
+    padding: 20px;
+    font-size: 15px;
   }
   
-  /* from assets/css/style.css:1282 */
   .faq-icon {
-    width: 18px; /* SP: Slightly smaller icon */
+    width: 18px;
     height: 18px;
-    margin-left: 12px; /* SP: Reduced margin */
+    margin-left: 12px;
   }
   
-  /* from assets/css/style.css:1301 */
   .faq-answer {
-    padding: 0 20px; /* SP: Reduced padding to match question */
+    padding: 0 20px;
   }
   
-  /* from assets/css/style.css:1313 */
   .faq-answer-content {
-    padding-bottom: 20px; /* SP: Reduced padding for mobile */
-    font-size: 14px; /* SP: Optimized font size */
-    line-height: 1.5; /* SP: Optimized line height */
+    padding-bottom: 20px;
+    font-size: 14px;
+    line-height: 1.5;
   }
   
-  /* from assets/css/style.css:1333 */
   .footer-cta {
-    padding: 0; /* SP: Reduced padding for mobile */
+    padding: 0;
     aspect-ratio: 3456 / 2050;
   }
   
-  /* from assets/css/style.css:1369 */
   .footer-content {
-    bottom: 20px; /* SP: Reduced bottom position for mobile */
-    left: 20px; /* SP: Reduced left position for mobile */
+    bottom: 20px;
+    left: 20px;
   }
   
-  /* from assets/css/style.css:1457 */
   .footer-btn-primary {
-    padding: clamp(12px, 4vw, 16px) clamp(32px, 10vw, 48px); /* SP: Fluid padding with min tap area */
-    font-size: clamp(16px, 4.5vw, 20px); /* SP: Fluid font size */
-    min-height: 44px; /* SP: Minimum tap area for accessibility */
-    min-width: 120px; /* SP: Minimum width for readability */
+    padding: clamp(12px, 4vw, 16px) clamp(32px, 10vw, 48px);
+    font-size: clamp(16px, 4.5vw, 20px);
+    min-height: 44px;
+    min-width: 120px;
   }
   
-  /* from assets/css/style.css:1496 */
   .footer-bottom {
-    padding: 24px 0; /* SP: Reduced padding for mobile */
+    padding: 24px 0;
   }
   
-  /* from assets/css/style.css:1510 */
   .footer-bottom-content {
-    gap: 12px; /* SP: Reduced gap for mobile */
+    gap: 12px;
   }
   
-  /* from assets/css/style.css:1529 */
   .footer-links {
-    gap: 16px; /* SP: Reduced gap for mobile */
+    gap: 16px;
   }
   
-  /* from assets/css/style.css:1544 */
   .footer-link {
-    font-size: 14px; /* SP: Optimized font size for mobile */
+    font-size: 14px;
   }
   
-  /* from assets/css/style.css:1563 */
   .footer-copyright {
-    font-size: 12px; /* SP: Slightly smaller font size for mobile */
+    font-size: 12px;
   }
   
-  /* from assets/css/style.css:1593 */
   .icon {
-    width: 20px; /* SP: Slightly smaller icons */
+    width: 20px;
     height: 20px;
   }
 }
 
 @media (min-width: 1200px) {
-  /* from assets/css/style.css:41 */
   .container {
     padding: 0;
   }
   
-  /* from assets/css/style.css:197 */
   .hero-grid {
     grid-template-columns: 1fr 1fr;
     gap: 32px;
   }
   
-  /* from assets/css/style.css:217 */
   .hero-text {
     text-align: left;
   }
   
-  /* from assets/css/style.css:243 */
   .hero-title {
     font-size: 62px;
   }
   
-  /* from assets/css/style.css:270 */
   .hero-description {
     font-size: 24px;
   }
   
-  
-  /* from assets/css/style.css:341 */
   .features {
     padding: 96px 0;
   }
-  
+
   .features-cards {
     padding: 96px 0;
   }
   
-  /* from assets/css/style.css:373 */
   .section-title {
     font-size: 40px;
   }
   
-  /* from assets/css/style.css:392 */
   .section-subtitle {
     font-size: 24px;
   }
   
-  /* from assets/css/style.css:412 */
   .product-detail-grid {
     grid-template-columns: 1fr 1fr;
   }
   
-  
-  /* from assets/css/style.css:469 */
   .product-detail-title {
     font-size: 46px;
   }
@@ -1416,43 +1285,35 @@ body {
     font-size: 24px;
   }
   
-  /* from assets/css/style.css:509 */
   .features-grid {
     grid-template-columns: repeat(4, 1fr);
   }
   
-  /* from assets/css/style.css:591 */
   .usecase {
     padding: 96px 0;
   }
   
-  /* from assets/css/style.css:645 */
   .usecase-slider {
     width: 100vw;
-    height: 75vh; /* Desktop: Larger viewport-based height */
+    height: 75vh;
   }
   
-  /* Modern browsers with aspect-ratio support */
   @supports (aspect-ratio: 1) {
     .usecase-slider {
-      height: auto; /* Let aspect-ratio control height */
-      min-height: 60vh; /* Minimum height for desktop */
-      max-height: 80vh; /* Maximum height for very wide screens */
+      height: auto;
+      min-height: 60vh;
+      max-height: 80vh;
     }
   }
   
-  
-  /* from assets/css/style.css:865 */
   .slider-indicators {
-    gap: 40px; /* Desktop: Larger gap */
+    gap: 40px;
   }
   
-  /* from assets/css/style.css:916 */
   .usersvoice {
     padding: 96px 0;
   }
   
-  /* from assets/css/style.css:977 */
   .voice-slider {
     width: 100vw;
     left: 50%;
@@ -1461,38 +1322,31 @@ body {
     overflow: hidden;
   }
 
-
   .voice-card {
     flex: 0 0 25%;
     max-width: 25%;
     padding: 0 15px;
   }
   
-  
-  /* from assets/css/style.css:1216 */
   .faq {
     padding: 96px 0;
   }
   
-  /* from assets/css/style.css:1339 */
   .footer-cta {
     padding: 0;
     aspect-ratio: 3456 / 2050;
   }
   
-  /* from assets/css/style.css:1394 */
   .footer-title {
     font-size: 64px;
   }
   
-  /* from assets/css/style.css:1419 */
   .footer-description {
     font-size: 24px;
   }
 }
 
 @media (max-width: 1279px) {
-  /* from assets/css/style.css:1108 */
   .voice-nav {
     position: absolute;
     top: 50%;
@@ -1512,23 +1366,22 @@ body {
 }
 
 @media (max-width: 480px) {
-  /* Very small screens adjustments */
   .usecase-navigation {
     margin-top: 28px;
   }
   
   .navigation-controls {
-    left: 0; /* Centered for very small screens to prevent overflow */
+    left: 0;
     gap: 6px;
   }
   
   .slider-indicators {
-    gap: 8px; /* Further reduced gap for very small screens */
+    gap: 8px;
   }
   
   .indicator.active,
   .indicator:not(.active) {
-    width: 35px; /* Smaller indicators for very small screens */
+    width: 35px;
     height: 5px;
   }
   
@@ -1543,7 +1396,6 @@ body {
     height: 16px;
   }
   
-  /* USERS VOICE pagination adjustments for very small screens */
   .pagination {
     gap: 6px;
     margin-top: 24px;
@@ -1556,17 +1408,15 @@ body {
 }
 
 @media (max-width: 360px) {
-  /* Extra small screens adjustments */
   .indicator.active,
   .indicator:not(.active) {
-    width: 35px; /* Even smaller indicators */
+    width: 35px;
   }
   
   .slider-indicators {
-    gap: 6px; /* Minimal gap for extra small screens */
+    gap: 6px;
   }
   
-  /* USERS VOICE for extra small screens */
   .pagination {
     gap: 4px;
     margin-top: 20px;
