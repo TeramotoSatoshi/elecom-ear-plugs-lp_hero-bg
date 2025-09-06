@@ -378,13 +378,13 @@ body {
 
 .usecase-slider {
   position: relative;
-  width: 100vw;
+  width: 100%;
   height: 70vh;
-  left: 50%;
-  transform: translateX(-50%);
   margin-bottom: 32px;
   overflow: hidden;
-  max-width: 100vw;
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 @supports (aspect-ratio: 1) {
@@ -555,7 +555,6 @@ body {
   line-height: 1.6;
   flex: 1;
   display: flex;
-  align-items: center;
 }
 
 .user-voice__pagination {
@@ -617,6 +616,7 @@ body {
 
 .cta-section {
   text-align: center;
+  margin-top: 100px;
 }
 
 .cta-btn {
@@ -842,8 +842,9 @@ body {
   }
 
   .usecase-slider {
-    width: 100vw;
+    width: 100%;
     height: 65vh;
+    max-width: 100%;
   }
 
   @supports (aspect-ratio: 1) {
@@ -1042,9 +1043,10 @@ body {
   }
 
   .usecase-slider {
-    width: 100vw;
+    width: 100%;
     height: 60vh;
     margin-bottom: 24px;
+    max-width: 100%;
   }
 
   @supports (aspect-ratio: 1) {
@@ -1223,8 +1225,9 @@ body {
   }
 
   .usecase-slider {
-    width: 100vw;
+    width: 100%;
     height: 75vh;
+    max-width: 1200px;
   }
 
   @supports (aspect-ratio: 1) {
@@ -1239,17 +1242,6 @@ body {
     gap: 40px;
   }
 
-  .usersvoice {
-    padding: 96px 0;
-  }
-
-  .voice-slider {
-    width: 100vw;
-    left: 50%;
-    transform: translateX(-50%);
-    padding: 0;
-    overflow: hidden;
-  }
 
 
   .faq {
@@ -1270,26 +1262,6 @@ body {
   }
 }
 
-@media (max-width: 1279px) {
-  .voice-nav {
-    position: absolute;
-    top: 50%;
-    z-index: 100;
-    left: auto;
-    right: auto;
-    transform: translateY(-50%);
-  }
-
-  .voice-prev {
-    left: -16px;
-    right: auto;
-  }
-
-  .voice-next {
-    right: -16px;
-    left: auto;
-  }
-}
 
 @media (max-width: 480px) {
   .usecase-navigation {
