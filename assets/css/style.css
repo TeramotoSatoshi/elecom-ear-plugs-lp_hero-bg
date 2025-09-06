@@ -125,6 +125,16 @@ body {
 }
 
 @media (max-width: 767px) {
+  .hero {
+    min-height: auto;
+    height: auto;
+  }
+
+  .hero-slider {
+    aspect-ratio: 375 / 590;
+    height: auto;
+  }
+
   .hero-slider .hero-slide-1 {
     background-image: url('../img/hero-bg_1_sp.png') !important;
   }
@@ -203,6 +213,16 @@ body {
   margin-top: 60vh;
 }
 
+.hero-text a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.hero-text a:hover {
+  text-decoration: none;
+  color: inherit;
+}
+
 .hero-btn:hover {
   background-color: white;
   color: black;
@@ -221,7 +241,7 @@ body {
 .hero-slide:nth-child(2) .hero-btn {
   background-color: white;
   color: black;
-  border: 2px solid white;
+  /* border: 2px solid white; */
 }
 
 .hero-slide:nth-child(2) .hero-btn:hover {
@@ -902,7 +922,7 @@ body {
   .user-voice__tag {
     padding: 16px;
     font-size: 16px;
-    letter-spacing: 0.5px;
+    letter-spacing: 0.2px;
   }
 
   .user-voice__card-title {
@@ -946,7 +966,7 @@ body {
 
   .hero {
     align-items: flex-start;
-    padding-top: clamp(8px, 2.5vw, 10px);
+    /* padding-top: clamp(8px, 2.5vw, 10px); */
   }
 
   .hero-grid {
@@ -1023,7 +1043,7 @@ body {
   }
 
   .product-detail-description {
-    font-size: 16px;
+    font-size: 15px;
     gap: 12px;
     line-height: 1.5;
   }
@@ -1050,6 +1070,10 @@ body {
   .feature-title {
     font-size: 18px;
     letter-spacing: 1px;
+  }
+
+  .user-voice .container {
+    padding: 0;
   }
 
   .usecase {
@@ -1280,6 +1304,24 @@ body {
 
 
 @media (max-width: 480px) {
+  .hero {
+    min-height: auto;
+    height: auto;
+  }
+
+  .hero-slider {
+    aspect-ratio: 375 / 590;
+    height: auto;
+  }
+
+  .hero-slider .hero-slide-1,
+  .hero-slider .hero-slide-2,
+  .hero-slider .hero-slide-3 {
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+  }
+
   .user-voice__slider {
     padding: 0 12px;
   }
@@ -1345,6 +1387,19 @@ body {
 }
 
 @media (max-width: 360px) {
+  .hero-slider {
+    aspect-ratio: 375 / 590;
+    height: auto;
+  }
+
+  .hero-slider .hero-slide-1,
+  .hero-slider .hero-slide-2,
+  .hero-slider .hero-slide-3 {
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+  }
+
   .user-voice__slider {
     padding: 0 8px;
   }
