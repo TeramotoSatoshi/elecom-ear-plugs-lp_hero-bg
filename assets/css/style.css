@@ -85,6 +85,7 @@ body {
   min-height: 100vh;
   min-height: 100dvh;
   overflow: hidden;
+  z-index: 2;
 }
 
 .hero-slider {
@@ -257,6 +258,8 @@ body {
 .features {
   padding: 64px 0;
   background-color: white;
+  position: relative;
+  z-index: 1;
 }
 
 .features .container {
@@ -374,17 +377,19 @@ body {
 .usecase {
   padding: 64px 0;
   background-color: var(--bg-gray-50);
+  position: relative;
+  z-index: 1;
 }
 
 .usecase-slider {
   position: relative;
-  width: 100%;
+  width: 100vw;
   height: 70vh;
   margin-bottom: 32px;
+  margin-left: calc(-50vw + 50%);
+  margin-right: calc(-50vw + 50%);
   overflow: hidden;
-  max-width: 1200px;
-  margin-left: auto;
-  margin-right: auto;
+  z-index: 1;
 }
 
 @supports (aspect-ratio: 1) {
@@ -842,9 +847,10 @@ body {
   }
 
   .usecase-slider {
-    width: 100%;
+    width: 100vw;
     height: 65vh;
-    max-width: 100%;
+    margin-left: calc(-50vw + 50%);
+    margin-right: calc(-50vw + 50%);
   }
 
   @supports (aspect-ratio: 1) {
@@ -872,20 +878,25 @@ body {
 @media (max-width: 840px) {
   .user-voice {
     padding: 48px 0;
+    overflow-x: hidden;
   }
 
   .user-voice__slider {
-    padding: 0 10px;
+    padding: 0 16px;
     max-width: 100%;
+    overflow: hidden;
   }
 
   .user-voice__slider .swiper-slide {
     width: 280px;
+    max-width: calc(100vw - 32px);
   }
 
   .user-voice__card {
     height: 280px;
     border-radius: 16px;
+    width: 100%;
+    max-width: 100%;
   }
 
   .user-voice__tag {
@@ -903,11 +914,14 @@ body {
   .user-voice__pagination {
     gap: 8px;
     margin: 32px 0 0 0;
+    flex-wrap: wrap;
+    justify-content: center;
   }
 
   .user-voice__pagination .swiper-pagination-bullet {
     width: 30px;
     height: 4px;
+    flex-shrink: 0;
   }
 }
 
@@ -1043,10 +1057,11 @@ body {
   }
 
   .usecase-slider {
-    width: 100%;
+    width: 100vw;
     height: 60vh;
     margin-bottom: 24px;
-    max-width: 100%;
+    margin-left: calc(-50vw + 50%);
+    margin-right: calc(-50vw + 50%);
   }
 
   @supports (aspect-ratio: 1) {
@@ -1225,9 +1240,10 @@ body {
   }
 
   .usecase-slider {
-    width: 100%;
+    width: 100vw;
     height: 75vh;
-    max-width: 1200px;
+    margin-left: calc(-50vw + 50%);
+    margin-right: calc(-50vw + 50%);
   }
 
   @supports (aspect-ratio: 1) {
@@ -1264,6 +1280,29 @@ body {
 
 
 @media (max-width: 480px) {
+  .user-voice__slider {
+    padding: 0 12px;
+  }
+
+  .user-voice__slider .swiper-slide {
+    width: 260px;
+    max-width: calc(100vw - 24px);
+  }
+
+  .user-voice__card {
+    height: 260px;
+  }
+
+  .user-voice__pagination {
+    gap: 6px;
+    margin: 24px 0 0 0;
+  }
+
+  .user-voice__pagination .swiper-pagination-bullet {
+    width: 25px;
+    height: 3px;
+  }
+
   .usecase-navigation {
     margin-top: 28px;
   }
@@ -1306,6 +1345,28 @@ body {
 }
 
 @media (max-width: 360px) {
+  .user-voice__slider {
+    padding: 0 8px;
+  }
+
+  .user-voice__slider .swiper-slide {
+    width: 240px;
+    max-width: calc(100vw - 16px);
+  }
+
+  .user-voice__card {
+    height: 240px;
+  }
+
+  .user-voice__pagination {
+    gap: 4px;
+    margin: 20px 0 0 0;
+  }
+
+  .user-voice__pagination .swiper-pagination-bullet {
+    width: 20px;
+    height: 3px;
+  }
 
   .indicator.active,
   .indicator:not(.active) {
