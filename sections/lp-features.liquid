@@ -1,0 +1,189 @@
+<section class="lp-features" data-section-type="lp-features" data-section-id="{{ section.id }}">
+  <div class="container">
+    {% comment %} Product Detail Section {% endcomment %}
+    {% if section.settings.show_product_detail %}
+      <div class="lp-features__product-detail-grid">
+        <div class="lp-features__product-detail-img">
+          {% if section.settings.product_image %}
+            <img src="{{ section.settings.product_image | image_url: width: 600 }}"
+                 srcset="{{ section.settings.product_image | image_url: width: 300 }} 300w,
+                         {{ section.settings.product_image | image_url: width: 600 }} 600w,
+                         {{ section.settings.product_image | image_url: width: 800 }} 800w"
+                 sizes="(max-width: 767px) 100vw, 50vw"
+                 alt="{{ section.settings.product_image.alt | default: 'Product Detail' }}"
+                 width="{{ section.settings.product_image.width | default: 600 }}"
+                 height="{{ section.settings.product_image.height | default: 400 }}"
+                 loading="lazy"
+                 decoding="async">
+          {% else %}
+            <img src="{{ 'product-white.png' | asset_url }}"
+                 alt="HCSL-EP01 Product Detail"
+                 width="600"
+                 height="400"
+                 loading="lazy"
+                 decoding="async">
+          {% endif %}
+        </div>
+        <div class="lp-features__product-detail-text">
+          {% if section.settings.product_title != blank %}
+            <h3 class="lp-features__product-detail-title">{{ section.settings.product_title }}</h3>
+          {% endif %}
+
+          {% if section.settings.product_description != blank %}
+            <div class="lp-features__product-detail-description">
+              {{ section.settings.product_description | newline_to_br }}
+            </div>
+          {% endif %}
+        </div>
+      </div>
+    {% endif %}
+  </div>
+</section>
+
+{% comment %} Feature Cards Section {% endcomment %}
+<section class="lp-features__cards" data-section-type="lp-features-cards" data-section-id="{{ section.id }}-cards">
+  <div class="container">
+    {% if section.settings.section_title != blank or section.settings.section_subtitle != blank %}
+      <div class="section-header">
+        {% if section.settings.section_title != blank %}
+          <h2 class="section-title">{{ section.settings.section_title }}</h2>
+        {% endif %}
+        {% if section.settings.section_subtitle != blank %}
+          <p class="section-subtitle">{{ section.settings.section_subtitle }}</p>
+        {% endif %}
+      </div>
+    {% endif %}
+
+    <div class="lp-features__grid">
+      {% for block in section.blocks %}
+        {% case block.type %}
+          {% when 'feature_card' %}
+            <div class="lp-features__card" {{ block.shopify_attributes }}>
+              <div class="lp-features__icon">
+                {% if block.settings.icon != blank %}
+                  {{ block.settings.icon }}
+                {% else %}
+                  <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                    <circle cx="12" cy="12" r="10"/>
+                    <path d="M9 12l2 2 4-4"/>
+                  </svg>
+                {% endif %}
+              </div>
+              {% if block.settings.title != blank %}
+                <h3 class="lp-features__title">{{ block.settings.title }}</h3>
+              {% endif %}
+            </div>
+        {% endcase %}
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+
+{% schema %}
+{
+  "name": "LP Features",
+  "tag": "section",
+  "class": "section-lp-features",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Product Detail Settings"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_product_detail",
+      "label": "Show product detail section",
+      "default": true
+    },
+    {
+      "type": "image_picker",
+      "id": "product_image",
+      "label": "Product Image"
+    },
+    {
+      "type": "text",
+      "id": "product_title",
+      "label": "Product Title",
+      "default": "耳にフィットする、新しい\"音のコントロール\""
+    },
+    {
+      "type": "textarea",
+      "id": "product_description",
+      "label": "Product Description",
+      "default": "独自のD字形状が耳のくぼみに沿ってフィット。\nさらに高い遮音性能で、騒がしい環境に静けさを。\n片耳わずか1gの軽量設計だから、\n装着していることを忘れて自然に使えます。"
+    },
+    {
+      "type": "header",
+      "content": "Feature Cards Settings"
+    },
+    {
+      "type": "text",
+      "id": "section_title",
+      "label": "Section Title",
+      "default": "FEATURES"
+    },
+    {
+      "type": "text",
+      "id": "section_subtitle",
+      "label": "Section Subtitle",
+      "default": "製品の特徴"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "feature_card",
+      "name": "Feature Card",
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Feature Title",
+          "default": "Feature Title"
+        },
+        {
+          "type": "html",
+          "id": "icon",
+          "label": "SVG Icon (optional)",
+          "info": "Paste SVG code here. If empty, a default icon will be used."
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "LP Features",
+      "blocks": [
+        {
+          "type": "feature_card",
+          "settings": {
+            "title": "高遮音性能",
+            "icon": "<svg class=\"icon\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\"><path d=\"M11 5L6 9l5 4-5 4 5 4\" /><path d=\"M13 5l5 4-5 4 5 4-5 4\" /></svg>"
+          }
+        },
+        {
+          "type": "feature_card",
+          "settings": {
+            "title": "片耳1gの<br>軽量設計",
+            "icon": "<svg class=\"icon\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\"><path d=\"M21 12c0 4.97-4.03 9-9 9s-9-4.03-9-9 4.03-9 9-9 9 4.03 9 9z\" /><path d=\"M9 12l2 2 4-4\" /></svg>"
+          }
+        },
+        {
+          "type": "feature_card",
+          "settings": {
+            "title": "スライド式ケース",
+            "icon": "<svg class=\"icon\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\"><path d=\"M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z\" /><polyline points=\"3.27,6.96 12,12.01 20.73,6.96\" /><line x1=\"12\" y1=\"22.08\" x2=\"12\" y2=\"12\" /></svg>"
+          }
+        },
+        {
+          "type": "feature_card",
+          "settings": {
+            "title": "低価格",
+            "icon": "<svg class=\"icon\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\"><line x1=\"12\" y1=\"1\" x2=\"12\" y2=\"23\" /><path d=\"M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6\" /></svg>"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,128 @@
+<section class="lp-hero" data-section-type="lp-hero" data-section-id="{{ section.id }}">
+  <div class="lp-hero__slider"
+       data-auto-rotate="{{ section.settings.auto_rotate }}"
+       data-rotate-speed="{{ section.settings.rotate_speed }}">
+
+    {% for block in section.blocks %}
+      {% case block.type %}
+        {% when 'hero_slide' %}
+          {% assign desktop_img = block.settings.desktop_image | default: false %}
+          {% assign mobile_img = block.settings.mobile_image | default: false %}
+          {% assign fallback_desktop = 'hero-bg_' | append: forloop.index | append: '.png' %}
+          {% assign fallback_mobile = 'hero-bg_' | append: forloop.index | append: '_sp.png' %}
+
+          <div class="lp-hero__slide {% if forloop.first %}active{% endif %} lp-hero__slide-{{ forloop.index }}"
+               style="--desktop-bg: url('{% if desktop_img %}{{ desktop_img | image_url: width: 1920 }}{% else %}{{ fallback_desktop | asset_url }}{% endif %}'); --mobile-bg: url('{% if mobile_img %}{{ mobile_img | image_url: width: 768 }}{% else %}{{ fallback_mobile | asset_url }}{% endif %}');"
+               {{ block.shopify_attributes }}>
+            <div class="lp-hero__overlay"></div>
+            <div class="lp-hero__content">
+              {% if block.settings.button_text != blank and block.settings.button_url != blank %}
+                <a href="{{ block.settings.button_url }}"
+                   {% if block.settings.open_new_tab %}target="_blank" rel="noopener noreferrer"{% endif %}>
+                  <button class="lp-hero__btn">{{ block.settings.button_text }}</button>
+                </a>
+              {% endif %}
+            </div>
+          </div>
+      {% endcase %}
+    {% endfor %}
+  </div>
+</section>
+
+<style>
+  {% for block in section.blocks %}
+    {% case block.type %}
+      {% when 'hero_slide' %}
+        {% if block.settings.desktop_image %}
+          .lp-hero__slider .lp-hero__slide-{{ forloop.index }} {
+            background-image: url('{{ block.settings.desktop_image | image_url: width: 1920 }}') !important;
+          }
+        {% endif %}
+
+        {% if block.settings.mobile_image %}
+          @media (max-width: 767px) {
+            .lp-hero__slider .lp-hero__slide-{{ forloop.index }} {
+              background-image: url('{{ block.settings.mobile_image | image_url: width: 768 }}') !important;
+            }
+          }
+        {% endif %}
+    {% endcase %}
+  {% endfor %}
+</style>
+
+
+{% schema %}
+{
+  "name": "LP Hero Slider",
+  "tag": "section",
+  "class": "section-lp-hero",
+  "settings": [
+    {
+      "type": "checkbox",
+      "id": "auto_rotate",
+      "label": "Auto-rotate slides",
+      "default": true
+    },
+    {
+      "type": "range",
+      "id": "rotate_speed",
+      "label": "Rotation speed (seconds)",
+      "min": 3,
+      "max": 10,
+      "step": 1,
+      "default": 5
+    }
+  ],
+  "blocks": [
+    {
+      "type": "hero_slide",
+      "name": "Hero Slide",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "desktop_image",
+          "label": "Desktop Image"
+        },
+        {
+          "type": "image_picker",
+          "id": "mobile_image",
+          "label": "Mobile Image"
+        },
+        {
+          "type": "text",
+          "id": "button_text",
+          "label": "Button Text",
+          "default": "今すぐチェック"
+        },
+        {
+          "type": "url",
+          "id": "button_url",
+          "label": "Button URL"
+        },
+        {
+          "type": "checkbox",
+          "id": "open_new_tab",
+          "label": "Open in new tab",
+          "default": true
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "LP Hero Slider",
+      "blocks": [
+        {
+          "type": "hero_slide"
+        },
+        {
+          "type": "hero_slide"
+        },
+        {
+          "type": "hero_slide"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

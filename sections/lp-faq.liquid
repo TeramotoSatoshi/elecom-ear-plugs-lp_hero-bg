@@ -1,0 +1,124 @@
+<section class="lp-faq" data-section-type="lp-faq" data-section-id="{{ section.id }}">
+  <div class="container">
+    <div class="lp-faq__container">
+      {% if section.settings.section_title != blank or section.settings.section_subtitle != blank %}
+        <div class="section-header">
+          {% if section.settings.section_title != blank %}
+            <h2 class="section-title">{{ section.settings.section_title }}</h2>
+          {% endif %}
+          {% if section.settings.section_subtitle != blank %}
+            <p class="section-subtitle">{{ section.settings.section_subtitle }}</p>
+          {% endif %}
+        </div>
+      {% endif %}
+
+      <div class="lp-faq__list">
+        {% for block in section.blocks %}
+          {% case block.type %}
+            {% when 'faq_item' %}
+              <div class="lp-faq__item" {{ block.shopify_attributes }}>
+                <button class="lp-faq__question"
+                        aria-expanded="{% if forloop.first %}true{% else %}false{% endif %}"
+                        aria-controls="faq-answer-{{ forloop.index0 }}">
+                  <span>{{ block.settings.question }}</span>
+                  <svg class="lp-faq__icon icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                  </svg>
+                </button>
+                <div class="lp-faq__answer" id="faq-answer-{{ forloop.index0 }}">
+                  <div class="lp-faq__answer-content">
+                    {{ block.settings.answer }}
+                  </div>
+                </div>
+              </div>
+          {% endcase %}
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+</section>
+
+
+{% schema %}
+{
+  "name": "LP FAQ",
+  "tag": "section",
+  "class": "section-lp-faq",
+  "settings": [
+    {
+      "type": "text",
+      "id": "section_title",
+      "label": "Section Title",
+      "default": "FAQ"
+    },
+    {
+      "type": "text",
+      "id": "section_subtitle",
+      "label": "Section Subtitle",
+      "default": "よくあるご質問"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "faq_item",
+      "name": "FAQ Item",
+      "settings": [
+        {
+          "type": "text",
+          "id": "question",
+          "label": "Question",
+          "default": "質問をここに入力してください"
+        },
+        {
+          "type": "textarea",
+          "id": "answer",
+          "label": "Answer",
+          "default": "回答をここに入力してください"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "LP FAQ",
+      "blocks": [
+        {
+          "type": "faq_item",
+          "settings": {
+            "question": "耳栓の装着方法を教えてください",
+            "answer": "独自のD字形状により、耳のくぼみに沿って自然にフィットします。軽く押し込むだけで装着完了です。無理に押し込む必要はありません。"
+          }
+        },
+        {
+          "type": "faq_item",
+          "settings": {
+            "question": "どのくらいの遮音効果がありますか？",
+            "answer": "高遮音性能により、周囲の騒音を大幅にカットします。ただし、必要な音（アナウンスや会話など）は聞こえるよう設計されています。"
+          }
+        },
+        {
+          "type": "faq_item",
+          "settings": {
+            "question": "長時間の使用でも痛くなりませんか？",
+            "answer": "片耳わずか1gの軽量設計で、長時間装着していても疲れにくい構造です。柔らかい素材を使用しているため、耳への負担を最小限に抑えています。"
+          }
+        },
+        {
+          "type": "faq_item",
+          "settings": {
+            "question": "ケースは付属していますか？",
+            "answer": "はい。スライド式ケースが付属しており、1秒で取り出せる便利な設計になっています。持ち運びも簡単です。"
+          }
+        },
+        {
+          "type": "faq_item",
+          "settings": {
+            "question": "お手入れ方法を教えてください",
+            "answer": "中性洗剤を薄めた水で軽く洗い、よく乾燥させてからご使用ください。アルコール系の洗剤は避けてください。"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

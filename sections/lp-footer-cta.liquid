@@ -1,0 +1,146 @@
+<footer class="lp-footer" data-section-type="lp-footer-cta" data-section-id="{{ section.id }}">
+  <section class="lp-footer__cta">
+    <div class="lp-footer__bg"
+         style="background-image: url('{% if section.settings.background_image %}{{ section.settings.background_image | image_url: width: 1920 }}{% else %}{{ 'footer-bg.png' | asset_url }}{% endif %}')"
+         >
+    </div>
+    <div class="lp-footer__content">
+      {% if section.settings.cta_text != blank %}
+        {% if section.settings.cta_url != blank %}
+          <a href="{{ section.settings.cta_url }}"
+             {% if section.settings.open_new_tab %}target="_blank" rel="noopener noreferrer"{% endif %}>
+            <button class="lp-footer__btn-primary">{{ section.settings.cta_text }}</button>
+          </a>
+        {% else %}
+          <button class="lp-footer__btn-primary">{{ section.settings.cta_text }}</button>
+        {% endif %}
+      {% endif %}
+    </div>
+  </section>
+
+  <div class="lp-footer__bottom">
+    <div class="container">
+      <div class="lp-footer__bottom-content">
+        <div class="lp-footer__links">
+          {% for block in section.blocks %}
+            {% case block.type %}
+              {% when 'footer_link' %}
+                {% if block.settings.link_url != blank %}
+                  <a href="{{ block.settings.link_url }}" class="lp-footer__link"
+                     {% if block.settings.open_new_tab %}target="_blank" rel="noopener noreferrer"{% endif %}
+                     {{ block.shopify_attributes }}>
+                    {{ block.settings.link_text }}
+                  </a>
+                {% else %}
+                  <button class="lp-footer__link" {{ block.shopify_attributes }}>
+                    {{ block.settings.link_text }}
+                  </button>
+                {% endif %}
+
+                {% unless forloop.last %}
+                  <span class="lp-footer__separator">|</span>
+                {% endunless %}
+            {% endcase %}
+          {% endfor %}
+        </div>
+
+        {% if section.settings.copyright_text != blank %}
+          <div class="lp-footer__copyright">
+            {{ section.settings.copyright_text }}
+          </div>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+{% schema %}
+{
+  "name": "LP Footer CTA",
+  "tag": "footer",
+  "class": "section-lp-footer",
+  "settings": [
+    {
+      "type": "header",
+      "content": "CTA Section"
+    },
+    {
+      "type": "image_picker",
+      "id": "background_image",
+      "label": "Background Image"
+    },
+    {
+      "type": "text",
+      "id": "cta_text",
+      "label": "CTA Button Text",
+      "default": "今すぐ購入する"
+    },
+    {
+      "type": "url",
+      "id": "cta_url",
+      "label": "CTA Button URL"
+    },
+    {
+      "type": "checkbox",
+      "id": "open_new_tab",
+      "label": "Open in new tab",
+      "default": true
+    },
+    {
+      "type": "header",
+      "content": "Footer Bottom"
+    },
+    {
+      "type": "text",
+      "id": "copyright_text",
+      "label": "Copyright Text",
+      "default": "© 2025 All rights reserved."
+    }
+  ],
+  "blocks": [
+    {
+      "type": "footer_link",
+      "name": "Footer Link",
+      "settings": [
+        {
+          "type": "text",
+          "id": "link_text",
+          "label": "Link Text",
+          "default": "Link"
+        },
+        {
+          "type": "url",
+          "id": "link_url",
+          "label": "Link URL"
+        },
+        {
+          "type": "checkbox",
+          "id": "open_new_tab",
+          "label": "Open in new tab",
+          "default": false
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "LP Footer CTA",
+      "blocks": [
+        {
+          "type": "footer_link",
+          "settings": {
+            "link_text": "ログイン"
+          }
+        },
+        {
+          "type": "footer_link",
+          "settings": {
+            "link_text": "会員登録"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}
