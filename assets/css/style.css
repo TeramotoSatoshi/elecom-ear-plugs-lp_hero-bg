@@ -896,6 +896,7 @@ body {
 @media (max-width: 767px) {
   .header-content {
     height: 60px;
+    width: 90%;
   }
 
   .logo img {
