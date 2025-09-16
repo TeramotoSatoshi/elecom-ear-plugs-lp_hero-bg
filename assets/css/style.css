@@ -51,22 +51,28 @@ body {
   justify-content: space-between;
   width: 90%;
   margin: 0 auto;
-  height: 80px;
+  height: 100px;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
 }
 
 .logo img {
-  height: 40px;
+  height: 60px;
   width: auto;
-  margin: auto;
 }
 
 .login-btn {
   background-color: var(--primary-blue);
   color: white;
-  padding: 12px 32px;
+  padding: 12px 35px;
   border: none;
   border-radius: 50px;
-  font-weight: 600;
+  font-size: 20px;
   cursor: pointer;
   transition: var(--transition);
   display: none;
